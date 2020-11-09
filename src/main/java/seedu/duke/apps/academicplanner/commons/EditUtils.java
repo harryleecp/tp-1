@@ -4,8 +4,14 @@ import static java.lang.Integer.parseInt;
 import static seedu.duke.apps.academicplanner.commons.SharedUtils.fromFailingToPass;
 import static seedu.duke.apps.academicplanner.commons.SharedUtils.getEntryToBeEdited;
 import static seedu.duke.apps.academicplanner.commons.SharedUtils.getLatestSemester;
+import static seedu.duke.apps.academicplanner.commons.SharedUtils.notAllowedSemesterUpdateBackward;
 import static seedu.duke.apps.academicplanner.commons.SharedUtils.notAllowedSemesterUpdateForward;
 import static seedu.duke.apps.academicplanner.commons.SharedUtils.verifyRepeatedSemester;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
 import seedu.duke.apps.academicplanner.exceptions.AcademicException;
 import seedu.duke.apps.capcalculator.commons.CalculatorUtils;
 import seedu.duke.apps.moduleloader.ModuleLoader;
@@ -145,12 +151,12 @@ public class EditUtils {
         ArrayList<Integer> moduleIndexList = modulesAddedMap.get(moduleCode);
         PartialModule currentSemesterModule = modulesList.get(moduleIndexList.get(indexToUpdate));
 
-        if (parseInt(newValue) > currentSemesterModule.getSemesterIndex()) {
-            if (notAllowedSemesterUpdateForward(parseInt(newValue), moduleIndexList, modulesList)) {
+        if (parseInt(newValue) > currentSemesterModule.getSemesterIndex() && moduleIndexList.size() > 1) {
+            if (notAllowedSemesterUpdateForward(parseInt(newValue), modulesList, moduleCode)) {
                 throw new AcademicException(ERROR_ILLEGAL_FORWARD);
             }
-        } else {
-            if (!modChecker.isRetakeGrade(currentSemesterModule.getGrade())) {
+        } else if (moduleIndexList.size() > 1) {
+            if (notAllowedSemesterUpdateBackward(parseInt(newValue), modulesList, moduleCode)) {
                 throw new AcademicException(ERROR_ILLEGAL_BACKWARD);
             }
         }
