@@ -35,25 +35,25 @@ PlanNUS is a CLI-based project which aims to provide a centralised solution for 
 * **New Functionality:** Creation of `App`, `Command`, and `FullModule` classes in `global` folder
     * What it does: These classes are essential as it forms the parent class for every App and Command within PlanNUS. The `FullModule` class is responsible for storing information of each module after being converted into POJO by GSON.
     * Justification: These classes are created to ensure that every App and Command within PlanNUS follows a certain format to allow for ease of adaptation into `main`.
+* **New Functionality:**  Creation of `SharedUtils` class
+    * What it does: This class contains all helper methods to allow for further validation of inputs during `add`, `edit` and `remove` command.
+    * Justification: This is done such that PlanNUS is able to support the retaking of modules that our users had initially failed.
 * **Documentation**
     * User Guide
-        * Took and formatted all images [#159](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/159)
+        * Took and formatted all images [#159](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/159), [#251](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/251)
         * Proofreading of User Guide
     * Developer Guide
         * Added documentation for Architecture, Overview: PlanNUS, Project Structure and Lifecycle of PlanNUS [#105](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/105), [#141](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/141), [#142](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/142), [#143](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/143), [#144](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/144), [#145](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/145)
         * Proofreading of Developer Guide
-
 * **Team-Based Tasks**
   * Reviewing and accepting most pull requests.
   * Setting up Gradle with extra dependencies, namely Apache Commons and GSON. [#2](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/2)
   * Made code quality enhancements [#34](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/34), [#98](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/98)
   * Created templates for standardisation of coding format across PlanNUS [#42](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/42), [#53](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/53)
   * Efficiency improvements across PlanNUS [#85](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/85)
-  * General Bug Fixes [#33](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/33), [#117](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/117)
+  * General Bug Fixes [#33](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/33), [#117](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/117), [#261](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/261), [#274](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/274), [#291](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/291), [#316](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/316), [#318](https://github.com/AY2021S1-CS2113T-F12-1/tp/pull/318)
   * Release Management ([V2.0](https://github.com/AY2021S1-CS2113T-F12-1/tp/releases/tag/V2.0))
-
 * ***Note that the Contributions for User Guide cannot be extracted as it spans the whole document***
-
 * **Contributions to the Developer Guide (Extract)** 
 
 ## 3. Design

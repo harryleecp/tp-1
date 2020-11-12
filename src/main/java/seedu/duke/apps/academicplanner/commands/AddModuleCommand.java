@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static seedu.duke.apps.academicplanner.commons.SharedUtils.getAllOccurrencesOfModule;
+import static seedu.duke.apps.academicplanner.commons.SharedUtils.getLatestFailSemester;
 import static seedu.duke.apps.academicplanner.commons.SharedUtils.getLatestSemesterModule;
 import static seedu.duke.apps.academicplanner.commons.SharedUtils.printAllOccurrencesOfModule;
 
@@ -92,7 +93,7 @@ public class AddModuleCommand extends Command {
         boolean isRetake = validateModuleCode();
 
         int semesterValue = getSemesterValue(isRetake);
-        String gradeValue = getGradeValue(isRetake);
+        String gradeValue = getGradeValue(isRetake,semesterValue);
         int moduleCredit = addUtils.getModuleCreditForModule(moduleCode);
 
         assertInputs(semesterValue, moduleCredit);
@@ -111,12 +112,13 @@ public class AddModuleCommand extends Command {
      * @return Valid Grade value
      * @throws AcademicException when invalid grade value is given
      */
-    private String getGradeValue(boolean isRetake) throws AcademicException {
+    private String getGradeValue(boolean isRetake, int semesterValue) throws AcademicException {
         promptUserToEnterGrade();
         String gradeValue = in.nextLine().trim().toUpperCase();
         validateInputGrade(gradeValue);
 
-        if (isRetake && !moduleValidator.isRetakeGrade(gradeValue)) {
+        if (isRetake && !moduleValidator.isRetakeGrade(gradeValue)
+                && semesterValue < getLatestFailSemester(currentPerson.getModulesList(), moduleCode)) {
             throw new AcademicException(INVALID_RETAKE_GRADE);
         }
 
